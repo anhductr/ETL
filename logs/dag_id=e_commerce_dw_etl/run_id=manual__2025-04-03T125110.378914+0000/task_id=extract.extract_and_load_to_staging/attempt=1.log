@@ -1,0 +1,57 @@
+[2025-04-03T12:51:11.712+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-03T12:51:11.742+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T12:51:10.378914+00:00 [queued]>
+[2025-04-03T12:51:11.750+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T12:51:10.378914+00:00 [queued]>
+[2025-04-03T12:51:11.750+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-03T12:51:11.763+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-04-03 12:51:10.378914+00:00
+[2025-04-03T12:51:11.772+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-04-03T12:51:10.378914+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpi2pdzy7q']
+[2025-04-03T12:51:11.775+0000] {standard_task_runner.py:91} INFO - Job 45: Subtask extract.extract_and_load_to_staging
+[2025-04-03T12:51:11.776+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=241) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-03T12:51:11.776+0000] {standard_task_runner.py:63} INFO - Started process 244 to run task
+[2025-04-03T12:51:11.820+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T12:51:10.378914+00:00 [running]> on host b01079282ea0
+[2025-04-03T12:51:11.900+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-04-03T12:51:10.378914+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-03T12:51:10.378914+00:00'
+[2025-04-03T12:51:11.901+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-03T12:51:13.519+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-03T12:51:14.460+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:04, 1.12MB/s]
+[2025-04-03T12:51:14.596+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:01, 2.25MB/s]
+[2025-04-03T12:51:14.733+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 4.82MB/s]
+[2025-04-03T12:51:14.817+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 5.08MB/s]
+[2025-04-03T12:51:15.205+0000] {logging_mixin.py:188} INFO - ✅ Dataset đã được tải về: /opt/***/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/versions/24
+[2025-04-03T12:51:15.205+0000] {logging_mixin.py:188} INFO - Base path: /opt/***/dataset
+[2025-04-03T12:51:15.206+0000] {logging_mixin.py:188} INFO - Dataset path: /opt/***/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/versions/24
+[2025-04-03T12:51:15.208+0000] {logging_mixin.py:188} INFO - Đang kiểm tra thư mục: /opt/***/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/versions/24
+[2025-04-03T12:51:15.209+0000] {logging_mixin.py:188} INFO - Các thư mục con: []
+[2025-04-03T12:51:15.209+0000] {logging_mixin.py:188} INFO - Các tệp trong thư mục: ['circuits.csv', 'constructors.csv', 'constructor_results.csv', 'constructor_standings.csv', 'drivers.csv', 'driver_standings.csv', 'lap_times.csv', 'pit_stops.csv', 'qualifying.csv', 'races.csv', 'results.csv', 'seasons.csv', 'sprint_results.csv', 'status.csv']
+[2025-04-03T12:51:15.209+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: circuits.csv
+[2025-04-03T12:51:15.212+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển circuits.csv về /opt/***/dataset
+[2025-04-03T12:51:15.213+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: constructors.csv
+[2025-04-03T12:51:15.216+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển constructors.csv về /opt/***/dataset
+[2025-04-03T12:51:15.216+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: constructor_results.csv
+[2025-04-03T12:51:15.219+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển constructor_results.csv về /opt/***/dataset
+[2025-04-03T12:51:15.219+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: constructor_standings.csv
+[2025-04-03T12:51:15.222+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển constructor_standings.csv về /opt/***/dataset
+[2025-04-03T12:51:15.222+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: drivers.csv
+[2025-04-03T12:51:15.225+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển drivers.csv về /opt/***/dataset
+[2025-04-03T12:51:15.225+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: driver_standings.csv
+[2025-04-03T12:51:15.228+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển driver_standings.csv về /opt/***/dataset
+[2025-04-03T12:51:15.228+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: lap_times.csv
+[2025-04-03T12:51:15.231+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển lap_times.csv về /opt/***/dataset
+[2025-04-03T12:51:15.231+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: pit_stops.csv
+[2025-04-03T12:51:15.234+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển pit_stops.csv về /opt/***/dataset
+[2025-04-03T12:51:15.234+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: qualifying.csv
+[2025-04-03T12:51:15.237+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển qualifying.csv về /opt/***/dataset
+[2025-04-03T12:51:15.237+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: races.csv
+[2025-04-03T12:51:15.240+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển races.csv về /opt/***/dataset
+[2025-04-03T12:51:15.240+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: results.csv
+[2025-04-03T12:51:15.243+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển results.csv về /opt/***/dataset
+[2025-04-03T12:51:15.243+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: seasons.csv
+[2025-04-03T12:51:15.246+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển seasons.csv về /opt/***/dataset
+[2025-04-03T12:51:15.246+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: sprint_results.csv
+[2025-04-03T12:51:15.249+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển sprint_results.csv về /opt/***/dataset
+[2025-04-03T12:51:15.249+0000] {logging_mixin.py:188} INFO - Đang xử lý tệp: status.csv
+[2025-04-03T12:51:15.252+0000] {logging_mixin.py:188} INFO - 📂 Đã di chuyển status.csv về /opt/***/dataset
+[2025-04-03T12:51:15.252+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-03T12:51:15.253+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-03T12:51:15.261+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-04-03T12:51:10.378914+00:00, execution_date=20250403T125110, start_date=20250403T125111, end_date=20250403T125115
+[2025-04-03T12:51:15.281+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-03T12:51:15.296+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-03T12:51:15.297+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

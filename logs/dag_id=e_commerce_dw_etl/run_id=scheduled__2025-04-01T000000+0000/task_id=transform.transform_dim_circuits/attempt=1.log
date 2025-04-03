@@ -1,0 +1,71 @@
+[2025-04-03T11:46:47.917+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-03T11:46:47.966+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [queued]>
+[2025-04-03T11:46:47.979+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [queued]>
+[2025-04-03T11:46:47.980+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-03T11:46:47.996+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_circuits> on 2025-04-01 00:00:00+00:00
+[2025-04-03T11:46:48.018+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=313) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-03T11:46:48.020+0000] {standard_task_runner.py:63} INFO - Started process 331 to run task
+[2025-04-03T11:46:48.023+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'transform.transform_dim_circuits', 'scheduled__2025-04-01T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpwzyekhxv']
+[2025-04-03T11:46:48.026+0000] {standard_task_runner.py:91} INFO - Job 10: Subtask transform.transform_dim_circuits
+[2025-04-03T11:46:48.114+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [running]> on host 58c1cfc89c0d
+[2025-04-03T11:46:48.267+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='transform.transform_dim_circuits' AIRFLOW_CTX_EXECUTION_DATE='2025-04-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-01T00:00:00+00:00'
+[2025-04-03T11:46:48.271+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-03T11:46:48.304+0000] {logging_mixin.py:188} INFO - Lỗi khi đọc CSV: [Errno 2] No such file or directory: '/opt/***/dataset/circuit.csv'
+[2025-04-03T11:46:48.309+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-03T11:46:48.311+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-03T11:46:48.324+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=e_commerce_dw_etl, task_id=transform.transform_dim_circuits, run_id=scheduled__2025-04-01T00:00:00+00:00, execution_date=20250401T000000, start_date=20250403T114647, end_date=20250403T114648
+[2025-04-03T11:46:48.362+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-03T11:46:48.385+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-03T11:46:48.386+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-03T14:33:32.151+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-03T14:33:32.204+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [queued]>
+[2025-04-03T14:33:32.222+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [queued]>
+[2025-04-03T14:33:32.226+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-03T14:33:32.249+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_circuits> on 2025-04-01 00:00:00+00:00
+[2025-04-03T14:33:32.273+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=268) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-03T14:33:32.277+0000] {standard_task_runner.py:63} INFO - Started process 298 to run task
+[2025-04-03T14:33:32.276+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'transform.transform_dim_circuits', 'scheduled__2025-04-01T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpcbzql_qe']
+[2025-04-03T14:33:32.282+0000] {standard_task_runner.py:91} INFO - Job 11: Subtask transform.transform_dim_circuits
+[2025-04-03T14:33:32.407+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.transform.transform_dim_circuits scheduled__2025-04-01T00:00:00+00:00 [running]> on host 4817eee54a38
+[2025-04-03T14:33:32.576+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='transform.transform_dim_circuits' AIRFLOW_CTX_EXECUTION_DATE='2025-04-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-01T00:00:00+00:00'
+[2025-04-03T14:33:32.585+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-03T14:33:32.600+0000] {logging_mixin.py:188} INFO - /opt/***/dataset
+[2025-04-03T14:33:32.636+0000] {logging_mixin.py:188} INFO - đã đọc được circuits
+[2025-04-03T14:33:32.639+0000] {logging_mixin.py:188} INFO - tạo dc postgres
+[2025-04-03T14:33:32.655+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-03T14:33:32.673+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/transform_dim_circuits.py", line 35, in transform_dim_circuits
+    warehouse_operator.create_table(create_table_qr)
+  File "/opt/airflow/dags/postgresql_operator.py", line 12, in create_table
+    conn = pg_hook.get_conn()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 145, in get_conn
+    conn = deepcopy(self.connection or self.get_connection(conn_id))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2025-04-03T14:33:32.686+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=transform.transform_dim_circuits, run_id=scheduled__2025-04-01T00:00:00+00:00, execution_date=20250401T000000, start_date=20250403T143332, end_date=20250403T143332
+[2025-04-03T14:33:32.703+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 11 for task transform.transform_dim_circuits (The conn_id `postgres_default` isn't defined; 298)
+[2025-04-03T14:33:32.741+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-03T14:33:32.761+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-03T14:33:32.762+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,21 @@
+[2025-04-03T11:59:27.248+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-03T11:59:27.275+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T11:59:26.084319+00:00 [queued]>
+[2025-04-03T11:59:27.282+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T11:59:26.084319+00:00 [queued]>
+[2025-04-03T11:59:27.283+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-03T11:59:27.295+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-04-03 11:59:26.084319+00:00
+[2025-04-03T11:59:27.303+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'extract.extract_and_load_to_staging', 'manual__2025-04-03T11:59:26.084319+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpqvbrlddz']
+[2025-04-03T11:59:27.306+0000] {standard_task_runner.py:91} INFO - Job 16: Subtask extract.extract_and_load_to_staging
+[2025-04-03T11:59:27.306+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=357) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-03T11:59:27.307+0000] {standard_task_runner.py:63} INFO - Started process 361 to run task
+[2025-04-03T11:59:27.347+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.extract.extract_and_load_to_staging manual__2025-04-03T11:59:26.084319+00:00 [running]> on host ccd9326b237c
+[2025-04-03T11:59:27.440+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-04-03T11:59:26.084319+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-03T11:59:26.084319+00:00'
+[2025-04-03T11:59:27.441+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-03T11:59:28.197+0000] {logging_mixin.py:188} INFO - ✅ Dataset đã được tải về: /opt/***/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/versions/24
+[2025-04-03T11:59:28.202+0000] {logging_mixin.py:188} INFO - /opt/***/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/versions/24
+[2025-04-03T11:59:28.202+0000] {logging_mixin.py:188} INFO - []
+[2025-04-03T11:59:28.202+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-03T11:59:28.203+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-03T11:59:28.213+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=e_commerce_dw_etl, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-04-03T11:59:26.084319+00:00, execution_date=20250403T115926, start_date=20250403T115927, end_date=20250403T115928
+[2025-04-03T11:59:28.243+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-03T11:59:28.257+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-03T11:59:28.258+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
