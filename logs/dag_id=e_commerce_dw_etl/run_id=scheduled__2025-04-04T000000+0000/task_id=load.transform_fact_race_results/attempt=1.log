@@ -1,0 +1,87 @@
+[2025-04-05T04:34:46.817+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-05T04:34:46.855+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T04:34:46.864+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T04:34:46.865+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-05T04:34:46.886+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load.transform_fact_race_results> on 2025-04-04 00:00:00+00:00
+[2025-04-05T04:34:46.899+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'load.transform_fact_race_results', 'scheduled__2025-04-04T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpq9fjiepy']
+[2025-04-05T04:34:46.901+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask load.transform_fact_race_results
+[2025-04-05T04:34:46.902+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=341) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-05T04:34:46.903+0000] {standard_task_runner.py:63} INFO - Started process 352 to run task
+[2025-04-05T04:34:46.951+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [running]> on host 0076f80062a6
+[2025-04-05T04:34:47.046+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='load.transform_fact_race_results' AIRFLOW_CTX_EXECUTION_DATE='2025-04-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-04T00:00:00+00:00'
+[2025-04-05T04:34:47.047+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-05T04:34:47.061+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-05T04:34:47.062+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: transform_fact_race_results() missing 1 required positional argument: 'POSTGRES_CONN_ID'
+[2025-04-05T04:34:47.071+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=load.transform_fact_race_results, run_id=scheduled__2025-04-04T00:00:00+00:00, execution_date=20250404T000000, start_date=20250405T043446, end_date=20250405T043447
+[2025-04-05T04:34:47.083+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 14 for task load.transform_fact_race_results (transform_fact_race_results() missing 1 required positional argument: 'POSTGRES_CONN_ID'; 352)
+[2025-04-05T04:34:47.117+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-05T04:34:47.135+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-05T04:34:47.137+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-05T04:50:07.547+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-05T04:50:07.578+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T04:50:07.587+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [queued]>
+[2025-04-05T04:50:07.587+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-05T04:50:07.601+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load.transform_fact_race_results> on 2025-04-04 00:00:00+00:00
+[2025-04-05T04:50:07.610+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=558) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-05T04:50:07.611+0000] {standard_task_runner.py:63} INFO - Started process 562 to run task
+[2025-04-05T04:50:07.610+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'load.transform_fact_race_results', 'scheduled__2025-04-04T00:00:00+00:00', '--job-id', '64', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmp6l552h2t']
+[2025-04-05T04:50:07.612+0000] {standard_task_runner.py:91} INFO - Job 64: Subtask load.transform_fact_race_results
+[2025-04-05T04:50:07.654+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results scheduled__2025-04-04T00:00:00+00:00 [running]> on host 7b82c2aa8826
+[2025-04-05T04:50:07.735+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='load.transform_fact_race_results' AIRFLOW_CTX_EXECUTION_DATE='2025-04-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-04T00:00:00+00:00'
+[2025-04-05T04:50:07.736+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-05T04:50:07.852+0000] {logging_mixin.py:188} INFO - Các cột trong DataFrame sau khi merge:
+[2025-04-05T04:50:07.853+0000] {logging_mixin.py:188} INFO - Index(['resultId', 'raceId', 'driverId', 'constructorId', 'number', 'grid',
+       'position', 'positionText', 'positionOrder', 'points', 'laps', 'time_x',
+       'milliseconds', 'fastestLap', 'rank', 'fastestLapTime',
+       'fastestLapSpeed', 'statusId', 'year', 'round', 'circuitId', 'name',
+       'date', 'time_y', 'url', 'fp1_date', 'fp1_time', 'fp2_date', 'fp2_time',
+       'fp3_date', 'fp3_time', 'quali_date', 'quali_time', 'sprint_date',
+       'sprint_time'],
+      dtype='object')
+[2025-04-05T04:50:07.944+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-05T04:50:07.950+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-05T04:50:07.950+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/transform_fact_race_results.py", line 54, in transform_fact_race_results
+    warehouse_operator.create_table(create_table_qr)
+  File "/opt/airflow/dags/postgresql_operator.py", line 12, in create_table
+    cursor.execute(query)
+psycopg2.errors.DuplicateTable: relation "fact_race_results" already exists
+
+[2025-04-05T04:50:07.967+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=load.transform_fact_race_results, run_id=scheduled__2025-04-04T00:00:00+00:00, execution_date=20250404T000000, start_date=20250405T045007, end_date=20250405T045007
+[2025-04-05T04:50:07.981+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 64 for task load.transform_fact_race_results (relation "fact_race_results" already exists
+; 562)
+[2025-04-05T04:50:08.026+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-05T04:50:08.036+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

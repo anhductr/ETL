@@ -11,7 +11,7 @@ def transform_dim_constructors():
         print(f"Lỗi khi đọc CSV: {e}")
         return
     columns = ["constructorId", "constructorRef", "name", "nationality"]
-    dim_constructors_df = df[columns]
+    dim_constructors_df = df[columns].copy()
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
@@ -19,8 +19,8 @@ def transform_dim_constructors():
     create_table_qr = """
         CREATE TABLE IF NOT EXISTS dim_constructors (
         constructorId INT PRIMARY KEY,
-        constructorRef VARCHAR(255) NOT NULL,
-        name VARCHAR(255) NOT NULL,
+        constructorRef VARCHAR(255),
+        constructorName VARCHAR(255),
         nationality VARCHAR(100)
     );
     """
@@ -37,7 +37,7 @@ def transform_dim_constructors():
 
     try:
         cursor.executemany("""
-            INSERT INTO dim_constructors(constructorId, constructorRef, name, nationality)
+            INSERT INTO dim_constructors(constructorId, constructorRef, constructorName, nationality)
             VALUES (%s, %s, %s, %s)
         """, values)
         conn.commit()

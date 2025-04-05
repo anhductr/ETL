@@ -1,0 +1,36 @@
+[2025-04-05T04:34:46.830+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-05T04:34:46.868+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results manual__2025-04-05T04:34:42.525484+00:00 [queued]>
+[2025-04-05T04:34:46.878+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results manual__2025-04-05T04:34:42.525484+00:00 [queued]>
+[2025-04-05T04:34:46.878+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-05T04:34:46.926+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load.transform_fact_race_results> on 2025-04-05 04:34:42.525484+00:00
+[2025-04-05T04:34:46.942+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=340) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-05T04:34:46.944+0000] {standard_task_runner.py:63} INFO - Started process 356 to run task
+[2025-04-05T04:34:46.944+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'e_commerce_dw_etl', 'load.transform_fact_race_results', 'manual__2025-04-05T04:34:42.525484+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpfpb881a4']
+[2025-04-05T04:34:46.947+0000] {standard_task_runner.py:91} INFO - Job 17: Subtask load.transform_fact_race_results
+[2025-04-05T04:34:46.998+0000] {task_command.py:426} INFO - Running <TaskInstance: e_commerce_dw_etl.load.transform_fact_race_results manual__2025-04-05T04:34:42.525484+00:00 [running]> on host 0076f80062a6
+[2025-04-05T04:34:47.094+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='e_commerce_dw_etl' AIRFLOW_CTX_TASK_ID='load.transform_fact_race_results' AIRFLOW_CTX_EXECUTION_DATE='2025-04-05T04:34:42.525484+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-05T04:34:42.525484+00:00'
+[2025-04-05T04:34:47.096+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-05T04:34:47.110+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-05T04:34:47.111+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: transform_fact_race_results() missing 1 required positional argument: 'POSTGRES_CONN_ID'
+[2025-04-05T04:34:47.120+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=e_commerce_dw_etl, task_id=load.transform_fact_race_results, run_id=manual__2025-04-05T04:34:42.525484+00:00, execution_date=20250405T043442, start_date=20250405T043446, end_date=20250405T043447
+[2025-04-05T04:34:47.131+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 17 for task load.transform_fact_race_results (transform_fact_race_results() missing 1 required positional argument: 'POSTGRES_CONN_ID'; 356)
+[2025-04-05T04:34:47.158+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-05T04:34:47.185+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-05T04:34:47.186+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

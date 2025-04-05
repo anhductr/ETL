@@ -1,10 +1,15 @@
 import pandas as pd
+import numpy as np
 import os
 from dags.extract_data import base_path
 from postgresql_operator import PostgresOperators
 from airflow.providers.postgres.hooks.postgres import PostgresHook
+from psycopg2.extensions import register_adapter, AsIs
 
 def transform_dim_seasons():
+    # Đăng ký adapter cho numpy.int64
+    register_adapter(np.int64, AsIs)
+    
     try:
         df = pd.read_csv(os.path.join(base_path, "seasons.csv"))
     except Exception as e:
@@ -12,7 +17,7 @@ def transform_dim_seasons():
         return
 
     columns = ["year"]
-    dim_seasons_df = df[columns]
+    dim_seasons_df = df[columns].copy()
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
@@ -28,8 +33,9 @@ def transform_dim_seasons():
     conn = pg_hook.get_conn()
     cursor = conn.cursor()
 
+    # Chuyển đổi giá trị trước khi insert để đảm bảo không có numpy.int64
     values = [
-        (row['year'],)
+        (row['year'],)  # Ép kiểu int để PostgreSQL chấp nhận
         for _, row in dim_seasons_df.iterrows()
     ]
 

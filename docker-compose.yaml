@@ -1,11 +1,5 @@
-#Cấu hình này khởi động Airflow (Webserver, Scheduler, Init), PostgreSQL (cho Airflow và DWH), MySQL, và Git Sync.
-
-#Các service giao tiếp qua data_network.
-
+#Cấu hình này khởi động Airflow (Webserver, Scheduler, Init), PostgreSQL (cho Airflow và DWH)
 #Các thư mục DAGs, logs, config, plugins được mount vào container để dễ quản lý.
-
-
-
 
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -23,7 +17,6 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
 
 # Basic Airflow cluster configuration for CeleryExecutor with Redis and PostgreSQL.
 #
@@ -60,9 +53,8 @@ x-airflow-common:
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.9.2}
-  # build: .
   build: .  # Xây dựng image từ Dockerfile
- #Xây dựng image từ Dockerfile trong thư mục hiện tại thay vì sử dụng image có sẵn.
+  #Xây dựng image từ Dockerfile trong thư mục hiện tại thay vì sử dụng image có sẵn.
   environment:
     &airflow-common-env # Định nghĩa một tập hợp các biến môi trường chung để tái sử dụng cho nhiều service.
     AIRFLOW__CORE__EXECUTOR: LocalExecutor #Cấu hình Airflow sử dụng LocalExecutor, tức là thực thi DAG trên máy cục bộ thay vì dùng Celery.
@@ -99,9 +91,9 @@ services:
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
@@ -232,28 +224,18 @@ services:
     image: postgres:14-alpine #Dùng PostgreSQL 14 nhẹ hơn.
     container_name: postgres_db
     environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: postgres
-    volumes: #volumes: Lưu dữ liệu PostgreSQL và sử dụng file pg_hba.conf cho bảo mật.
+      POSTGRES_USER: ${WH_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${WH_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${WH_POSTGRES_DB}
+    volumes: #Lưu dữ liệu PostgreSQL và sử dụng file pg_hba.conf cho bảo mật.
       - postgres_data_h:/var/lib/postgresql/data
       - ./pg_hba.conf:/tmp/pg_hba.conf #file cấu hình quyền truy cập vào PostgreSQL.
-      # - ./scripts/:/docker-entrypoint-initdb.d/
     command: ["postgres", "-c", "hba_file=/tmp/pg_hba.conf", "-c", "port=5433"]
-    # expose:
-    #   - "5433"
     ports: 
       - "5433:5433" 
 
-
-# networks:
-#   data_network: #Tạo mạng data_network để kết nối các container.
-#     driver: bridge
-#     name: data_network
-
-#Khai báo volumes để lưu trữ dữ liệu MySQL và PostgreSQL.
+#Khai báo volumes để lưu trữ dữ liệu PostgreSQL.
 volumes: 
-  mysql_h: {}
   postgres-db-volume:
   postgres_data_h: {}
 

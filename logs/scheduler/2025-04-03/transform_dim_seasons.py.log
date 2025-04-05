@@ -1950,3 +1950,53 @@ SyntaxError: invalid syntax
 [2025-04-03T15:42:15.024+0000] {logging_mixin.py:188} INFO - [2025-04-03T15:42:15.023+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
 [2025-04-03T15:42:16.034+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
 [2025-04-03T15:42:16.068+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 1.062 seconds
+[2025-04-03T16:06:17.113+0000] {processor.py:161} INFO - Started process (PID=204) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:17.115+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:06:17.117+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:06:17.117+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:17.924+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:17.943+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.837 seconds
+[2025-04-03T16:06:48.940+0000] {processor.py:161} INFO - Started process (PID=264) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:48.942+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:06:48.943+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:06:48.943+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:49.569+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:06:49.583+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.649 seconds
+[2025-04-03T16:07:20.115+0000] {processor.py:161} INFO - Started process (PID=322) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:20.117+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:07:20.119+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:07:20.119+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:20.778+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:20.792+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.682 seconds
+[2025-04-03T16:07:51.000+0000] {processor.py:161} INFO - Started process (PID=380) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:51.001+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:07:51.003+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:07:51.002+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:51.448+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:07:51.458+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.462 seconds
+[2025-04-03T16:08:21.737+0000] {processor.py:161} INFO - Started process (PID=438) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:21.738+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:08:21.740+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:08:21.740+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:22.200+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:22.210+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.479 seconds
+[2025-04-03T16:08:52.665+0000] {processor.py:161} INFO - Started process (PID=496) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:52.666+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:08:52.668+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:08:52.667+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:53.116+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:08:53.129+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.468 seconds
+[2025-04-03T16:09:23.626+0000] {processor.py:161} INFO - Started process (PID=554) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:23.627+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:09:23.628+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:09:23.628+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:24.097+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:24.107+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.485 seconds
+[2025-04-03T16:09:54.454+0000] {processor.py:161} INFO - Started process (PID=612) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:54.455+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:09:54.456+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:09:54.456+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:54.890+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:09:54.901+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.451 seconds
+[2025-04-03T16:10:25.066+0000] {processor.py:161} INFO - Started process (PID=670) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:25.066+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:10:25.068+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:10:25.067+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:25.495+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:25.505+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.444 seconds
+[2025-04-03T16:10:55.743+0000] {processor.py:161} INFO - Started process (PID=728) to work on /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:55.743+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_seasons.py for tasks to queue
+[2025-04-03T16:10:55.745+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:10:55.744+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:56.149+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_seasons.py
+[2025-04-03T16:10:56.159+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_seasons.py took 0.421 seconds

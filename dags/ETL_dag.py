@@ -16,8 +16,6 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
 from datetime import datetime, timedelta
 
-# ... các import khác giữ nguyên ...
-
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -44,47 +42,45 @@ with DAG(
         )
 
     # Task Group Transform
-    with TaskGroup("transform") as transform_group:
+    with TaskGroup("transform") as transform_group: 
         task_dim_circuits = PythonOperator(
             task_id='transform_dim_circuits',
             python_callable=transform_dim_circuits,
         )
         
-        # task_dim_races = PythonOperator(
-        #     task_id='transform_dim_races',
-        #     python_callable=transform_dim_races,
-        # )
+        task_dim_races = PythonOperator( 
+            task_id='transform_dim_races',
+            python_callable=transform_dim_races,
+        )
         
-        # task_dim_status = PythonOperator(
-        #     task_id='transform_dim_status',
-        #     python_callable=transform_dim_status,
-        # )
+        task_dim_status = PythonOperator( 
+            task_id='transform_dim_status',
+            python_callable=transform_dim_status,
+        )
         
-        # task_dim_drivers = PythonOperator(
-        #     task_id='transform_dim_drivers',
-        #     python_callable=transform_dim_drivers,
-        # )
+        task_dim_drivers = PythonOperator(
+            task_id='transform_dim_drivers',
+            python_callable=transform_dim_drivers,
+        )
         
-        # task_dim_constructors = PythonOperator(
-        #     task_id='transform_dim_constructors',
-        #     python_callable=transform_dim_constructors,
-        # )
+        task_dim_constructors = PythonOperator(
+            task_id='transform_dim_constructors',
+            python_callable=transform_dim_constructors,
+        )
 
-        # task_dim_seasons = PythonOperator(
-        #     task_id='transform_dim_seasons',
-        #     python_callable=transform_dim_seasons,
-        # )
+        task_dim_seasons = PythonOperator(
+            task_id='transform_dim_seasons',
+            python_callable=transform_dim_seasons,
+        )
 
-    # # Task Group Load
-    # with TaskGroup("load") as load_group:
-    #     task_fact_orders = PythonOperator(
-    #         task_id='transform_fact_race_results',
-    #         python_callable=transform_fact_race_results,
-    #     )
+    # Task Group Load
+    with TaskGroup("load") as load_group:
+        task_fact_orders = PythonOperator(
+            task_id='transform_fact_race_results',
+            python_callable=transform_fact_race_results,
+        )
 
     #Thiết lập dependencies
-    extract_group 
-    # >> transform_group 
-    # >> load_group
+    extract_group >> transform_group >> load_group
 
 

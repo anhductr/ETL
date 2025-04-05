@@ -1,6 +1,4 @@
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-import pandas as pd
-from sqlalchemy import create_engine
 
 class PostgresOperators:
     def __init__(self, conn_id):

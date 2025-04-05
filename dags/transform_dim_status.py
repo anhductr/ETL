@@ -12,7 +12,7 @@ def transform_dim_status():
         return
 
     columns = ["statusId", "status"]
-    dim_status_df = df[columns]
+    dim_status_df = df[columns].copy()
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
@@ -36,8 +36,8 @@ def transform_dim_status():
 
     try:
         cursor.executemany("""
-            INSERT INTO dim_status (seasonId)
-            VALUES (%s)
+            INSERT INTO dim_status (statusId, status)
+            VALUES (%s, %s)
         """, values)
         conn.commit()
         print("Đã transform và lưu dữ liệu vào dim_status")

@@ -13,7 +13,13 @@ def transform_dim_drivers():
         return
 
     columns = ["driverId", "driverRef", "number", "code", "forename", "surname", "dob", "nationality"]
-    dim_drivers_df = df[columns]
+    dim_drivers_df = df[columns].copy()
+
+    # Thay '\N' bằng NaN cho toàn bộ DataFrame
+    dim_drivers_df.replace(r'\\N', pd.NA, regex=True, inplace=True)
+
+    # Chuyển NaT hoặc NaN thành None
+    dim_drivers_df = dim_drivers_df.where(pd.notna(dim_drivers_df), None)
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
@@ -21,12 +27,12 @@ def transform_dim_drivers():
     create_table_qr = """
         CREATE TABLE IF NOT EXISTS dim_drivers (
         driverId INT PRIMARY KEY,
-        driverRef VARCHAR(255) NOT NULL,
+        driverRef VARCHAR(255),
         number INT,
         code VARCHAR(10),
-        forename VARCHAR(100) NOT NULL,
-        surname VARCHAR(100) NOT NULL,
-        dob DATE NOT NULL,
+        forename VARCHAR(100),
+        surname VARCHAR(100),
+        dob DATE,
         nationality VARCHAR(100)
     );
     """

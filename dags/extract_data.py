@@ -16,7 +16,6 @@ def extract_and_load_to_staging():
     for root, dirs, files in os.walk(dataset_path):
         # Kiểm tra và di chuyển các tệp CSV
         for file in files:
-            print(f"Đang xử lý tệp: {file}")
             if file.endswith(".csv"):  # Chỉ di chuyển file CSV
                 old_file_path = os.path.join(root, file)
                 new_file_path = os.path.join(base_path, file)
@@ -25,6 +24,6 @@ def extract_and_load_to_staging():
                 if not os.path.exists(new_file_path):
                     # Di chuyển file CSV về thư mục base_path
                     shutil.move(old_file_path, new_file_path)
-                    print(f"📂 Đã di chuyển {file} về {base_path}")
+                    print(f"Đã di chuyển {file} về {base_path}")
                 else:
-                    print(f"📂 Tệp {file} đã tồn tại tại {base_path}, không di chuyển.")
+                    print(f"Tệp {file} đã tồn tại tại {base_path}, không di chuyển.")

@@ -14,7 +14,7 @@ def transform_dim_circuits():
         return
 
     columns = ["circuitId", "circuitRef", "name", "location", "country", "lat", "lng", "alt"]
-    dim_circuits_df = df[columns]
+    dim_circuits_df = df[columns].copy()
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)

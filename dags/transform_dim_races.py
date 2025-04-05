@@ -12,7 +12,16 @@ def transform_dim_races():
         return
 
     columns = ["raceId", "name", "date", "time", "round"]
-    dim_races_df = df[columns]
+    dim_races_df = df[columns].copy()
+
+    # Thay '\N' bằng NaN
+    dim_races_df['time'] = dim_races_df['time'].replace(r'\\N', pd.NA, regex=True)
+
+    # Ép kiểu cột 'time' thành datetime.time, bỏ qua lỗi
+    dim_races_df['time'] = pd.to_datetime(dim_races_df['time'], errors='coerce').dt.time
+
+    # Thay NaT (Not a Time) bằng None để tránh lỗi khi insert vào PostgreSQL
+    dim_races_df['time'] = dim_races_df['time'].where(pd.notna(dim_races_df['time']), None)
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
@@ -20,10 +29,10 @@ def transform_dim_races():
     create_table_qr = """
         CREATE TABLE IF NOT EXISTS dim_races (
         raceId INT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        date DATE NOT NULL,
-        time TIME NOT NULL,
-        round INT NOT NULL
+        raceName VARCHAR(255),
+        date DATE,
+        timeStart TIME NULL,
+        round INT
     );
     """
     warehouse_operator.create_table(create_table_qr)
@@ -39,7 +48,7 @@ def transform_dim_races():
 
     try:
         cursor.executemany("""
-            INSERT INTO dim_races (raceId, name, date, time, round)
+            INSERT INTO dim_races (raceId, raceName, date, timeStart, round)
             VALUES (%s, %s, %s, %s, %s)
         """, values)
         conn.commit()

@@ -1950,3 +1950,53 @@ SyntaxError: invalid syntax
 [2025-04-03T15:42:12.832+0000] {logging_mixin.py:188} INFO - [2025-04-03T15:42:12.832+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
 [2025-04-03T15:42:13.900+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
 [2025-04-03T15:42:13.934+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 1.122 seconds
+[2025-04-03T16:06:16.512+0000] {processor.py:161} INFO - Started process (PID=192) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:16.513+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:06:16.514+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:06:16.514+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:17.182+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:17.198+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.691 seconds
+[2025-04-03T16:06:47.326+0000] {processor.py:161} INFO - Started process (PID=255) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:47.327+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:06:47.329+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:06:47.328+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:47.861+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:06:47.876+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.556 seconds
+[2025-04-03T16:07:18.411+0000] {processor.py:161} INFO - Started process (PID=313) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:18.411+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:07:18.413+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:07:18.413+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:19.039+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:19.056+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.650 seconds
+[2025-04-03T16:07:49.472+0000] {processor.py:161} INFO - Started process (PID=371) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:49.473+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:07:49.474+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:07:49.474+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:49.927+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:07:49.940+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.472 seconds
+[2025-04-03T16:08:20.178+0000] {processor.py:161} INFO - Started process (PID=429) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:20.178+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:08:20.180+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:08:20.179+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:20.654+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:20.670+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.496 seconds
+[2025-04-03T16:08:51.163+0000] {processor.py:161} INFO - Started process (PID=487) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:51.164+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:08:51.165+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:08:51.165+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:51.595+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:08:51.606+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.448 seconds
+[2025-04-03T16:09:22.608+0000] {processor.py:161} INFO - Started process (PID=548) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:22.609+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:09:22.611+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:09:22.610+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:23.012+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:23.022+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.418 seconds
+[2025-04-03T16:09:53.434+0000] {processor.py:161} INFO - Started process (PID=606) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:53.434+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:09:53.436+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:09:53.436+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:53.827+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:09:53.837+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.407 seconds
+[2025-04-03T16:10:24.050+0000] {processor.py:161} INFO - Started process (PID=664) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:24.051+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:10:24.052+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:10:24.052+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:24.431+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:24.441+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.395 seconds
+[2025-04-03T16:10:54.720+0000] {processor.py:161} INFO - Started process (PID=722) to work on /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:54.721+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/transform_dim_status.py for tasks to queue
+[2025-04-03T16:10:54.722+0000] {logging_mixin.py:188} INFO - [2025-04-03T16:10:54.722+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:55.115+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/transform_dim_status.py
+[2025-04-03T16:10:55.126+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/transform_dim_status.py took 0.410 seconds
