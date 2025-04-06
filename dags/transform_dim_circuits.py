@@ -18,7 +18,6 @@ def transform_dim_circuits():
 
     POSTGRES_CONN_ID = 'postgres_default'
     warehouse_operator = PostgresOperators(POSTGRES_CONN_ID)
-    print("tạo dc postgres")
 
     create_table_qr = """
     CREATE TABLE IF NOT EXISTS dim_circuits (

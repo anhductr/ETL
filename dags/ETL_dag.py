@@ -27,9 +27,9 @@ default_args = {
 }
 
 with DAG(
-    'e_commerce_dw_etl',
+    'formula1-etl-pipeline',
     default_args=default_args,
-    description='ETL process for E-commerce Data Warehouse',
+    description='ETL process',
     schedule_interval=timedelta(days=1),
 ) as dag:
 
