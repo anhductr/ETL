@@ -1,12 +1,14 @@
 import pandas as pd
 import os
-from dags.extract_data import base_path
 from postgresql_operator import PostgresOperators
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-def transform_dim_status():
+def transform_dim_status(**kwargs):
+    ti = kwargs['ti']
+    dataset_path = ti.xcom_pull(task_ids='extract.extract_and_load_to_staging')
+    
     try:
-        df = pd.read_csv(os.path.join(base_path, "status.csv"))
+        df = pd.read_csv(os.path.join(dataset_path, "status.csv"))
     except Exception as e:
         print(f"Lỗi khi đọc CSV: {e}")
         return
@@ -25,25 +27,16 @@ def transform_dim_status():
     """
     warehouse_operator.create_table(create_table_qr)
 
-    pg_hook = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
-    conn = pg_hook.get_conn()
-    cursor = conn.cursor()
+    insert_table_querry = """
+        INSERT INTO dim_status (statusId, status)
+        VALUES (%s, %s)
+        ON CONFLICT (statusId) DO UPDATE SET
+            status = EXCLUDED.status
+    """
 
     values = [
         (row['statusId'], row['status'])
         for _, row in dim_status_df.iterrows()
     ]
 
-    try:
-        cursor.executemany("""
-            INSERT INTO dim_status (statusId, status)
-            VALUES (%s, %s)
-        """, values)
-        conn.commit()
-        print("Đã transform và lưu dữ liệu vào dim_status")
-    except Exception as e:
-        print(f"Lỗi khi insert dữ liệu: {e}")
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
+    warehouse_operator.insert_table(insert_table_querry, values)

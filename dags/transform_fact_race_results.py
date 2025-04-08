@@ -1,13 +1,15 @@
 import pandas as pd
 import os
-from dags.extract_data import base_path
 from postgresql_operator import PostgresOperators
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-def transform_fact_race_results():
+def transform_fact_race_results(**kwargs):
+    ti = kwargs['ti']
+    dataset_path = ti.xcom_pull(task_ids='extract.extract_and_load_to_staging')
+    
     try:
-        df_races = pd.read_csv(os.path.join(base_path, "races.csv"))
-        df_results = pd.read_csv(os.path.join(base_path, "results.csv"))
+        df_races = pd.read_csv(os.path.join(dataset_path, "races.csv"))
+        df_results = pd.read_csv(os.path.join(dataset_path, "results.csv"))
     except Exception as e:
         print(f"Lỗi khi đọc CSV: {e}")
         return
@@ -53,27 +55,25 @@ def transform_fact_race_results():
     """
     warehouse_operator.create_table(create_table_qr)
 
-    pg_hook = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
-    conn = pg_hook.get_conn()
-    cursor = conn.cursor()
+    insert_table_querry = """
+        INSERT INTO fact_race_results (race_result_Id, position, points, fastestLapTime, circuitId, seasonId, constructorId, driverId, raceId, statusId)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ON CONFLICT (race_result_Id) DO UPDATE SET
+            position = EXCLUDED.position,
+            points = EXCLUDED.points,
+            fastestLapTime = EXCLUDED.fastestLapTime,
+            circuitId = EXCLUDED.circuitId,
+            seasonId = EXCLUDED.seasonId,
+            constructorId = EXCLUDED.constructorId,
+            driverId = EXCLUDED.driverId,
+            raceId = EXCLUDED.raceId,
+            statusId = EXCLUDED.statusId
+    """
 
     values = [
         (row['resultId'], row['position'], row['points'], row['fastestLapTime'], row['circuitId'], row['year'], row['constructorId'], row['driverId'], row['raceId'], row['statusId'])
         for _, row in fact_race_results__df.iterrows()
     ]
 
-    try:
-        cursor.executemany("""
-            INSERT INTO fact_race_results (race_result_Id, position, points, fastestLapTime, circuitId, seasonId, constructorId, driverId, raceId, statusId)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, values)
-        conn.commit()
-        print("Đã transform và lưu dữ liệu vào fact_race_results")
-    except Exception as e:
-        print(f"Lỗi khi insert dữ liệu: {e}")
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
-    
+    warehouse_operator.insert_table(insert_table_querry, values)
     

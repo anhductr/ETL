@@ -1,13 +1,14 @@
 import pandas as pd
 import os
-from dags.extract_data import base_path
 from postgresql_operator import PostgresOperators
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 
-def transform_dim_drivers():
+def transform_dim_drivers(**kwargs):
+    ti = kwargs['ti']
+    dataset_path = ti.xcom_pull(task_ids='extract.extract_and_load_to_staging')
     try:
-        df = pd.read_csv(os.path.join(base_path, "drivers.csv"))
+        df = pd.read_csv(os.path.join(dataset_path, "drivers.csv"))
     except Exception as e:
         print(f"Lỗi khi đọc CSV: {e}")
         return
@@ -37,29 +38,26 @@ def transform_dim_drivers():
     );
     """
     warehouse_operator.create_table(create_table_qr)
-
-    pg_hook = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
-    conn = pg_hook.get_conn()
-    cursor = conn.cursor()
-
+    
+    insert_table_querry = """
+        INSERT INTO dim_drivers (driverId, driverRef, number, code, forename, surname, dob, nationality)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        ON CONFLICT (driverId) DO UPDATE SET
+            driverRef = EXCLUDED.driverRef,
+            number = EXCLUDED.number,
+            code = EXCLUDED.code,
+            forename = EXCLUDED.forename,
+            surname = EXCLUDED.surname,
+            dob = EXCLUDED.dob,
+            nationality = EXCLUDED.nationality;
+    """
+    
     values = [
         (row['driverId'], row['driverRef'], row['number'], row['code'], row['forename'], row['surname'], row['dob'], row['nationality'])
         for _, row in dim_drivers_df.iterrows()
     ]
 
-    try:
-        cursor.executemany("""
-            INSERT INTO dim_drivers (driverId, driverRef, number, code, forename, surname, dob, nationality)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-        """, values)
-        conn.commit()
-        print("Đã transform và lưu dữ liệu vào dim_drivers")
-    except Exception as e:
-        print(f"Lỗi khi insert dữ liệu: {e}")
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
-    
+    warehouse_operator.insert_table(insert_table_querry, values)
+
     
     

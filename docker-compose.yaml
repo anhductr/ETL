@@ -78,7 +78,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
-    - ${AIRFLOW_PROJ_DIR:-.}/dataset:/opt/airflow/dataset
+    - data-volume:/opt/airflow/dataset
   env_file: .env #Load biến môi trường từ file .env.
   user: "0:0"
   depends_on: #Đảm bảo service postgres khởi động thành công trước khi khởi chạy các service Airflow.
@@ -236,6 +236,7 @@ services:
 
 #Khai báo volumes để lưu trữ dữ liệu PostgreSQL.
 volumes: 
+  data-volume:
   postgres-db-volume:
   postgres_data_h: {}
 

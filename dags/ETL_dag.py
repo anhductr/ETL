@@ -46,31 +46,37 @@ with DAG(
         task_dim_circuits = PythonOperator(
             task_id='transform_dim_circuits',
             python_callable=transform_dim_circuits,
+            provide_context=True,
         )
         
         task_dim_races = PythonOperator( 
             task_id='transform_dim_races',
             python_callable=transform_dim_races,
+            provide_context=True,
         )
         
         task_dim_status = PythonOperator( 
             task_id='transform_dim_status',
             python_callable=transform_dim_status,
+            provide_context=True,
         )
         
         task_dim_drivers = PythonOperator(
             task_id='transform_dim_drivers',
             python_callable=transform_dim_drivers,
+            provide_context=True,
         )
         
         task_dim_constructors = PythonOperator(
             task_id='transform_dim_constructors',
             python_callable=transform_dim_constructors,
+            provide_context=True,
         )
 
         task_dim_seasons = PythonOperator(
             task_id='transform_dim_seasons',
             python_callable=transform_dim_seasons,
+            provide_context=True,
         )
 
     # Task Group Load
@@ -78,9 +84,10 @@ with DAG(
         task_fact_orders = PythonOperator(
             task_id='transform_fact_race_results',
             python_callable=transform_fact_race_results,
+            provide_context=True,
         )
 
-    #Thiết lập dependencies
+    #Thiết lập pipeline
     extract_group >> transform_group >> load_group
 
 

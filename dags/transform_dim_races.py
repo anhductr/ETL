@@ -1,12 +1,13 @@
 import pandas as pd
 import os
-from dags.extract_data import base_path
 from postgresql_operator import PostgresOperators
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
-def transform_dim_races():
+def transform_dim_races(**kwargs):
+    ti = kwargs['ti']
+    dataset_path = ti.xcom_pull(task_ids='extract.extract_and_load_to_staging')
     try:
-        df = pd.read_csv(os.path.join(base_path, "races.csv"))
+        df = pd.read_csv(os.path.join(dataset_path, "races.csv"))
     except Exception as e:
         print(f"Lỗi khi đọc CSV: {e}")
         return
@@ -37,25 +38,19 @@ def transform_dim_races():
     """
     warehouse_operator.create_table(create_table_qr)
 
-    pg_hook = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
-    conn = pg_hook.get_conn()
-    cursor = conn.cursor()
+    insert_table_querry = """
+        INSERT INTO dim_races (raceId, raceName, date, timeStart, round)
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (raceId) DO UPDATE SET
+            raceName = EXCLUDED.raceName,
+            date = EXCLUDED.date,
+            timeStart = EXCLUDED.timeStart,
+            round = EXCLUDED.round;
+    """
 
     values = [
         (row['raceId'], row['name'], row['date'], row['time'], row['round'])
         for _, row in dim_races_df.iterrows()
     ]
 
-    try:
-        cursor.executemany("""
-            INSERT INTO dim_races (raceId, raceName, date, timeStart, round)
-            VALUES (%s, %s, %s, %s, %s)
-        """, values)
-        conn.commit()
-        print("Đã transform và lưu dữ liệu vào dim_races")
-    except Exception as e:
-        print(f"Lỗi khi insert dữ liệu: {e}")
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
+    warehouse_operator.insert_table(insert_table_querry, values)
