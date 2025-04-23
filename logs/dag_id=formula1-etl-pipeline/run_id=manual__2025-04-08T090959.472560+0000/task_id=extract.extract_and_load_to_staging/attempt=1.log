@@ -1,0 +1,37 @@
+[2025-04-08T09:10:00.310+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:10:00.340+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging manual__2025-04-08T09:09:59.472560+00:00 [queued]>
+[2025-04-08T09:10:00.348+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging manual__2025-04-08T09:09:59.472560+00:00 [queued]>
+[2025-04-08T09:10:00.349+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:10:00.360+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-04-08 09:09:59.472560+00:00
+[2025-04-08T09:10:00.368+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'manual__2025-04-08T09:09:59.472560+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmphfv0f574']
+[2025-04-08T09:10:00.370+0000] {standard_task_runner.py:91} INFO - Job 13: Subtask extract.extract_and_load_to_staging
+[2025-04-08T09:10:00.371+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=722) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:10:00.372+0000] {standard_task_runner.py:63} INFO - Started process 724 to run task
+[2025-04-08T09:10:00.414+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging manual__2025-04-08T09:09:59.472560+00:00 [running]> on host bbffae879616
+[2025-04-08T09:10:00.492+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-04-08T09:09:59.472560+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-08T09:09:59.472560+00:00'
+[2025-04-08T09:10:00.493+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:10:02.021+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-08T09:10:02.958+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:04, 1.12MB/s]
+[2025-04-08T09:10:03.093+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:01, 2.25MB/s]
+[2025-04-08T09:10:03.231+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 4.84MB/s]
+[2025-04-08T09:10:03.314+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 5.10MB/s]
+[2025-04-08T09:10:03.668+0000] {logging_mixin.py:188} INFO - Đã di chuyển circuits.csv về /opt/***/dataset
+[2025-04-08T09:10:03.671+0000] {logging_mixin.py:188} INFO - Tệp constructors.csv đã tồn tại tại /opt/***/dataset, không di chuyển.
+[2025-04-08T09:10:03.674+0000] {logging_mixin.py:188} INFO - Đã di chuyển constructor_results.csv về /opt/***/dataset
+[2025-04-08T09:10:03.678+0000] {logging_mixin.py:188} INFO - Đã di chuyển constructor_standings.csv về /opt/***/dataset
+[2025-04-08T09:10:03.681+0000] {logging_mixin.py:188} INFO - Đã di chuyển drivers.csv về /opt/***/dataset
+[2025-04-08T09:10:03.684+0000] {logging_mixin.py:188} INFO - Đã di chuyển driver_standings.csv về /opt/***/dataset
+[2025-04-08T09:10:03.687+0000] {logging_mixin.py:188} INFO - Đã di chuyển lap_times.csv về /opt/***/dataset
+[2025-04-08T09:10:03.689+0000] {logging_mixin.py:188} INFO - Đã di chuyển pit_stops.csv về /opt/***/dataset
+[2025-04-08T09:10:03.692+0000] {logging_mixin.py:188} INFO - Đã di chuyển qualifying.csv về /opt/***/dataset
+[2025-04-08T09:10:03.695+0000] {logging_mixin.py:188} INFO - Đã di chuyển races.csv về /opt/***/dataset
+[2025-04-08T09:10:03.698+0000] {logging_mixin.py:188} INFO - Đã di chuyển results.csv về /opt/***/dataset
+[2025-04-08T09:10:03.701+0000] {logging_mixin.py:188} INFO - Đã di chuyển seasons.csv về /opt/***/dataset
+[2025-04-08T09:10:03.704+0000] {logging_mixin.py:188} INFO - Đã di chuyển sprint_results.csv về /opt/***/dataset
+[2025-04-08T09:10:03.708+0000] {logging_mixin.py:188} INFO - Đã di chuyển status.csv về /opt/***/dataset
+[2025-04-08T09:10:03.708+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-08T09:10:03.708+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:10:03.716+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=manual__2025-04-08T09:09:59.472560+00:00, execution_date=20250408T090959, start_date=20250408T091000, end_date=20250408T091003
+[2025-04-08T09:10:03.759+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-08T09:10:03.783+0000] {taskinstance.py:3503} INFO - 6 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T09:10:03.784+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

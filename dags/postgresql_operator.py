@@ -15,7 +15,7 @@ class PostgresOperators:
         try:
             cursor.execute(query)
             conn.commit()
-            print(f"Đã tạo bảng thành công.")
+            print("Đã tạo bảng thành công.")
         except Exception as e:
             conn.rollback()
             print("Lỗi khi tạo bảng:", e)

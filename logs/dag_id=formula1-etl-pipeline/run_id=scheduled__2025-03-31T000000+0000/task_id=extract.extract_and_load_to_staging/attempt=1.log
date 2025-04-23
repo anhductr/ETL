@@ -1,0 +1,400 @@
+[2025-04-08T09:08:21.770+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:08:21.815+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:08:21.836+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:08:21.840+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:08:21.878+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T09:08:21.895+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpf422sct1']
+[2025-04-08T09:08:21.900+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=482) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:08:21.903+0000] {standard_task_runner.py:63} INFO - Started process 499 to run task
+[2025-04-08T09:08:21.901+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask extract.extract_and_load_to_staging
+[2025-04-08T09:08:22.004+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host bbffae879616
+[2025-04-08T09:08:22.156+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T09:08:22.158+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:08:25.605+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<?, ?B/s]
+[2025-04-08T09:08:26.566+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:00<00:04, 1.09MB/s]
+[2025-04-08T09:08:26.717+0000] {logging_mixin.py:188} WARNING -  48%|####7     | 3.00M/6.28M [00:01<00:01, 2.17MB/s]
+[2025-04-08T09:08:26.921+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 2.94MB/s]
+[2025-04-08T09:08:27.064+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 3.85MB/s]
+[2025-04-08T09:08:27.230+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 4.49MB/s]
+[2025-04-08T09:08:27.253+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 3.36MB/s]
+[2025-04-08T09:08:27.258+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:08:27.261+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 13, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 130, in _resolve
+    api_client.download_file(url_path, archive_path, h)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/clients.py", line 222, in download_file
+    os.remove(out_file)  # Delete the corrupted file.
+    ^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'
+[2025-04-08T09:08:27.293+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T090821, end_date=20250408T090827
+[2025-04-08T09:08:27.324+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task extract.extract_and_load_to_staging ([Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'; 499)
+[2025-04-08T09:08:27.372+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T09:08:27.419+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T09:08:27.460+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T09:27:28.447+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:27:28.519+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:28.538+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:28.538+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:27:28.681+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T09:27:28.714+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=541) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:27:28.717+0000] {standard_task_runner.py:63} INFO - Started process 565 to run task
+[2025-04-08T09:27:28.713+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpuq554d0e']
+[2025-04-08T09:27:28.724+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask extract.extract_and_load_to_staging
+[2025-04-08T09:27:28.844+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host 1c2d39091a25
+[2025-04-08T09:27:28.987+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T09:27:28.989+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:27:30.061+0000] {logging_mixin.py:188} INFO - Tệp constructors.csv đã tồn tại tại /opt/***/dataset, không di chuyển.
+[2025-04-08T09:27:30.062+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-08T09:27:30.063+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:27:30.082+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T092728, end_date=20250408T092730
+[2025-04-08T09:27:30.142+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-08T09:27:30.205+0000] {taskinstance.py:3503} INFO - 6 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T09:27:30.207+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T09:59:42.216+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:59:42.282+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:59:42.301+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:59:42.303+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:59:42.480+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T09:59:42.518+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=372) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:59:42.520+0000] {standard_task_runner.py:63} INFO - Started process 407 to run task
+[2025-04-08T09:59:42.519+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpy8nyyf6x']
+[2025-04-08T09:59:42.530+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask extract.extract_and_load_to_staging
+[2025-04-08T09:59:42.683+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host a06a1ce74445
+[2025-04-08T09:59:42.874+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T09:59:42.876+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:59:45.218+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-08T09:59:46.194+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:05, 1.07MB/s]
+[2025-04-08T09:59:46.346+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:02, 2.14MB/s]
+[2025-04-08T09:59:46.462+0000] {logging_mixin.py:188} WARNING -  48%|####7     | 3.00M/6.28M [00:01<00:01, 3.28MB/s]
+[2025-04-08T09:59:46.612+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 4.15MB/s]
+[2025-04-08T09:59:46.825+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 4.39MB/s]
+[2025-04-08T09:59:47.039+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 4.55MB/s]
+[2025-04-08T09:59:47.065+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 3.57MB/s]
+[2025-04-08T09:59:47.214+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:59:47.215+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 13, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 132, in _resolve
+    _extract_archive(archive_path, out_path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 272, in _extract_archive
+    raise ValueError(msg)
+ValueError: Unsupported archive type.
+[2025-04-08T09:59:47.238+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T095942, end_date=20250408T095947
+[2025-04-08T09:59:47.285+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task extract.extract_and_load_to_staging (Unsupported archive type.; 407)
+[2025-04-08T09:59:47.328+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T09:59:47.376+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T09:59:47.386+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T10:10:04.848+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T10:10:04.986+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:10:05.014+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:10:05.015+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T10:10:05.130+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T10:10:05.178+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=362) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T10:10:05.190+0000] {standard_task_runner.py:63} INFO - Started process 388 to run task
+[2025-04-08T10:10:05.224+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpedrstw8b']
+[2025-04-08T10:10:05.228+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask extract.extract_and_load_to_staging
+[2025-04-08T10:10:05.394+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host 38a05d0acc45
+[2025-04-08T10:10:05.569+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T10:10:05.575+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T10:10:08.449+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-08T10:10:09.380+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:04, 1.13MB/s]
+[2025-04-08T10:10:09.521+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:01, 2.25MB/s]
+[2025-04-08T10:10:09.721+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 4.43MB/s]
+[2025-04-08T10:10:09.843+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 5.21MB/s]
+[2025-04-08T10:10:10.005+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 5.54MB/s]
+[2025-04-08T10:10:10.060+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 4.09MB/s]
+[2025-04-08T10:10:10.075+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T10:10:10.082+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 13, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 132, in _resolve
+    _extract_archive(archive_path, out_path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 264, in _extract_archive
+    if tarfile.is_tarfile(archive_path):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 2795, in is_tarfile
+    t = open(name)
+        ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 1802, in open
+    return func(name, "r", fileobj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 1870, in gzopen
+    fileobj = GzipFile(name, mode + "b", compresslevel, fileobj)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/gzip.py", line 192, in __init__
+    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'
+[2025-04-08T10:10:10.163+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T101004, end_date=20250408T101010
+[2025-04-08T10:10:10.207+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task extract.extract_and_load_to_staging ([Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'; 388)
+[2025-04-08T10:10:10.331+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T10:10:10.399+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T10:10:10.427+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T10:40:29.366+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T10:40:29.464+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:40:29.495+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:40:29.506+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T10:40:29.597+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T10:40:29.629+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=236) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T10:40:29.632+0000] {standard_task_runner.py:63} INFO - Started process 256 to run task
+[2025-04-08T10:40:29.635+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpkk_4sart']
+[2025-04-08T10:40:29.639+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask extract.extract_and_load_to_staging
+[2025-04-08T10:40:29.790+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host b1ea421720de
+[2025-04-08T10:40:29.951+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T10:40:29.955+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T10:40:32.596+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-08T10:40:33.573+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:05, 1.07MB/s]
+[2025-04-08T10:40:33.791+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:02, 1.98MB/s]
+[2025-04-08T10:40:33.961+0000] {logging_mixin.py:188} WARNING -  48%|####7     | 3.00M/6.28M [00:01<00:01, 2.87MB/s]
+[2025-04-08T10:40:34.145+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 3.57MB/s]
+[2025-04-08T10:40:34.344+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 4.03MB/s]
+[2025-04-08T10:40:34.529+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 4.48MB/s]
+[2025-04-08T10:40:34.562+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 3.35MB/s]
+[2025-04-08T10:40:34.575+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T10:40:34.576+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 12, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 132, in _resolve
+    _extract_archive(archive_path, out_path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 272, in _extract_archive
+    raise ValueError(msg)
+ValueError: Unsupported archive type.
+[2025-04-08T10:40:34.597+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T104029, end_date=20250408T104034
+[2025-04-08T10:40:34.620+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task extract.extract_and_load_to_staging (Unsupported archive type.; 256)
+[2025-04-08T10:40:34.676+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T10:40:34.713+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T10:40:34.718+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T10:48:57.218+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T10:48:57.276+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:48:57.290+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T10:48:57.291+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T10:48:57.357+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-08T10:48:57.377+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpsw86csgj']
+[2025-04-08T10:48:57.381+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask extract.extract_and_load_to_staging
+[2025-04-08T10:48:57.385+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=272) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T10:48:57.386+0000] {standard_task_runner.py:63} INFO - Started process 290 to run task
+[2025-04-08T10:48:57.465+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host 4e9e6de312e9
+[2025-04-08T10:48:57.572+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T10:48:57.574+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T10:48:59.945+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-08T10:49:00.911+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:05, 1.09MB/s]
+[2025-04-08T10:49:01.054+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:02, 2.18MB/s]
+[2025-04-08T10:49:01.218+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 4.54MB/s]
+[2025-04-08T10:49:01.357+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 6.78MB/s]
+[2025-04-08T10:49:01.420+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 4.46MB/s]
+[2025-04-08T10:49:01.427+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T10:49:01.429+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 12, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 132, in _resolve
+    _extract_archive(archive_path, out_path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 264, in _extract_archive
+    if tarfile.is_tarfile(archive_path):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 2795, in is_tarfile
+    t = open(name)
+        ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 1802, in open
+    return func(name, "r", fileobj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/tarfile.py", line 1870, in gzopen
+    fileobj = GzipFile(name, mode + "b", compresslevel, fileobj)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/gzip.py", line 192, in __init__
+    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'
+[2025-04-08T10:49:01.451+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T104857, end_date=20250408T104901
+[2025-04-08T10:49:01.482+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task extract.extract_and_load_to_staging ([Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'; 290)
+[2025-04-08T10:49:01.537+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T10:49:01.578+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T10:49:01.588+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-15T07:09:00.153+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-15T07:09:00.206+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:00.219+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:00.220+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-15T07:09:00.336+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-03-31 00:00:00+00:00
+[2025-04-15T07:09:00.354+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=419) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-15T07:09:00.356+0000] {standard_task_runner.py:63} INFO - Started process 437 to run task
+[2025-04-15T07:09:00.353+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpj_75sio5']
+[2025-04-15T07:09:00.359+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask extract.extract_and_load_to_staging
+[2025-04-15T07:09:00.461+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-03-31T00:00:00+00:00 [running]> on host e24a12ae0bf8
+[2025-04-15T07:09:00.597+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-15T07:09:00.600+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-15T07:09:03.199+0000] {logging_mixin.py:188} WARNING -   0%|          | 0.00/6.28M [00:00<?, ?B/s]
+[2025-04-15T07:09:04.163+0000] {logging_mixin.py:188} WARNING -  16%|#5        | 1.00M/6.28M [00:00<00:05, 1.09MB/s]
+[2025-04-15T07:09:04.300+0000] {logging_mixin.py:188} WARNING -  32%|###1      | 2.00M/6.28M [00:01<00:02, 2.20MB/s]
+[2025-04-15T07:09:04.434+0000] {logging_mixin.py:188} WARNING -  48%|####7     | 3.00M/6.28M [00:01<00:01, 3.27MB/s]
+[2025-04-15T07:09:04.609+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:01<00:00, 3.98MB/s]
+[2025-04-15T07:09:04.814+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 4.33MB/s]
+[2025-04-15T07:09:04.972+0000] {logging_mixin.py:188} WARNING -  96%|#########5| 6.00M/6.28M [00:01<00:00, 4.91MB/s]
+[2025-04-15T07:09:05.041+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 3.58MB/s]
+[2025-04-15T07:09:05.237+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-15T07:09:05.238+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 12, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 135, in _resolve
+    os.remove(archive_path)
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'
+[2025-04-15T07:09:05.256+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250415T070900, end_date=20250415T070905
+[2025-04-15T07:09:05.277+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task extract.extract_and_load_to_staging ([Errno 2] No such file or directory: '/opt/airflow/dataset/datasets/rohanrao/formula-1-world-championship-1950-2020/24.archive'; 437)
+[2025-04-15T07:09:05.327+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-15T07:09:05.372+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-15T07:09:05.382+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

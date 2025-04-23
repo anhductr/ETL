@@ -29,7 +29,7 @@ def transform_fact_race_results(**kwargs):
     # Thay '\N' bằng NaN cho toàn bộ DataFrame
     fact_race_results__df = fact_race_results__df.replace(r'\\N', pd.NA, regex=True)
 
-    # Duyệt từng cột và cố gắng ép kiểu datetime, sau đó lấy .dt.time nếu muốn
+    # Duyệt từng cột và ép kiểu datetime, sau đó lấy .dt.time nếu muốn
     for col in fact_race_results__df.columns:
         fact_race_results__df[col] = fact_race_results__df[col].where(pd.notna(fact_race_results__df[col]), None)
 
@@ -55,7 +55,7 @@ def transform_fact_race_results(**kwargs):
     """
     warehouse_operator.create_table(create_table_qr)
 
-    insert_table_querry = """
+    insert_table_query = """
         INSERT INTO fact_race_results (race_result_Id, position, points, fastestLapTime, circuitId, seasonId, constructorId, driverId, raceId, statusId)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (race_result_Id) DO UPDATE SET
@@ -75,5 +75,5 @@ def transform_fact_race_results(**kwargs):
         for _, row in fact_race_results__df.iterrows()
     ]
 
-    warehouse_operator.insert_table(insert_table_querry, values)
+    warehouse_operator.insert_table(insert_table_query, values)
     

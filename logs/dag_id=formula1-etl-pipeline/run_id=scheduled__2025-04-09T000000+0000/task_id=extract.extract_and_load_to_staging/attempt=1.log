@@ -1,0 +1,70 @@
+[2025-04-15T07:09:01.984+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-15T07:09:02.029+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-04-09T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:02.048+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-04-09T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:02.048+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-15T07:09:02.278+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract.extract_and_load_to_staging> on 2025-04-09 00:00:00+00:00
+[2025-04-15T07:09:02.289+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'extract.extract_and_load_to_staging', 'scheduled__2025-04-09T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpin6yn3kk']
+[2025-04-15T07:09:02.297+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask extract.extract_and_load_to_staging
+[2025-04-15T07:09:02.299+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=445) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-15T07:09:02.301+0000] {standard_task_runner.py:63} INFO - Started process 458 to run task
+[2025-04-15T07:09:02.378+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.extract.extract_and_load_to_staging scheduled__2025-04-09T00:00:00+00:00 [running]> on host e24a12ae0bf8
+[2025-04-15T07:09:02.493+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='extract.extract_and_load_to_staging' AIRFLOW_CTX_EXECUTION_DATE='2025-04-09T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-09T00:00:00+00:00'
+[2025-04-15T07:09:02.495+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-15T07:09:05.067+0000] {logging_mixin.py:188} WARNING -  48%|####7     | 3.00M/6.28M [00:00<?, ?B/s]
+[2025-04-15T07:09:06.056+0000] {logging_mixin.py:188} WARNING -  64%|######3   | 4.00M/6.28M [00:00<00:02, 1.06MB/s]
+[2025-04-15T07:09:06.175+0000] {logging_mixin.py:188} WARNING -  80%|#######9  | 5.00M/6.28M [00:01<00:00, 2.20MB/s]
+[2025-04-15T07:09:06.264+0000] {logging_mixin.py:188} WARNING - 100%|##########| 6.28M/6.28M [00:01<00:00, 2.88MB/s]
+[2025-04-15T07:09:06.267+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-15T07:09:06.270+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/extract_data.py", line 12, in extract_and_load_to_staging
+    dataset_path = kagglehub.dataset_download("rohanrao/formula-1-world-championship-1950-2020")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/datasets.py", line 35, in dataset_download
+    path, _ = registry.dataset_resolver(h, path, force_download=force_download)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/registry.py", line 28, in __call__
+    return impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/resolver.py", line 29, in __call__
+    path, version = self._resolve(handle, path, force_download=force_download)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/http_resolver.py", line 130, in _resolve
+    api_client.download_file(url_path, archive_path, h)
+  File "/home/airflow/.local/lib/python3.12/site-packages/kagglehub/clients.py", line 223, in download_file
+    raise DataCorruptionError(
+kagglehub.exceptions.DataCorruptionError: The X-Goog-Hash header indicated a MD5 checksum of:
+
+  PUEWw+AzlIOqakxFpOiNbw==
+
+but the actual MD5 checksum of the downloaded contents was:
+
+  9VvVMcwjfxhyB5aQByW7UQ==
+
+[2025-04-15T07:09:06.294+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=extract.extract_and_load_to_staging, run_id=scheduled__2025-04-09T00:00:00+00:00, execution_date=20250409T000000, start_date=20250415T070902, end_date=20250415T070906
+[2025-04-15T07:09:06.349+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 14 for task extract.extract_and_load_to_staging (The X-Goog-Hash header indicated a MD5 checksum of:
+
+  PUEWw+AzlIOqakxFpOiNbw==
+
+but the actual MD5 checksum of the downloaded contents was:
+
+  9VvVMcwjfxhyB5aQByW7UQ==
+; 458)
+[2025-04-15T07:09:06.416+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-15T07:09:06.467+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-15T07:09:06.482+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # Định nghĩa hàm Python sẽ được gọi bởi task
 def print_hello():
-    print("Hello, Airflow! DAG đang chạy thành công.")
+    print("Hello! DAG đang chạy thành công.")
 
 # Thiết lập thông tin DAG
 default_args = {

@@ -1,0 +1,49 @@
+[2025-04-08T09:27:32.585+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:27:32.719+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_circuits scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:32.779+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_circuits scheduled__2025-03-31T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:32.780+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:27:32.845+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_circuits> on 2025-03-31 00:00:00+00:00
+[2025-04-08T09:27:32.873+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'transform.transform_dim_circuits', 'scheduled__2025-03-31T00:00:00+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpvd1dvgr2']
+[2025-04-08T09:27:32.893+0000] {standard_task_runner.py:91} INFO - Job 20: Subtask transform.transform_dim_circuits
+[2025-04-08T09:27:32.891+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=603) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:27:32.900+0000] {standard_task_runner.py:63} INFO - Started process 645 to run task
+[2025-04-08T09:27:33.104+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.transform.transform_dim_circuits scheduled__2025-03-31T00:00:00+00:00 [running]> on host 1c2d39091a25
+[2025-04-08T09:27:33.410+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='transform.transform_dim_circuits' AIRFLOW_CTX_EXECUTION_DATE='2025-03-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-31T00:00:00+00:00'
+[2025-04-08T09:27:33.419+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:27:33.465+0000] {logging_mixin.py:188} INFO - /opt/***/dataset
+[2025-04-08T09:27:33.532+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:27:33.546+0000] {logging_mixin.py:188} INFO - Đã tạo bảng thành công.
+[2025-04-08T09:27:33.574+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:27:33.597+0000] {logging_mixin.py:188} INFO - Lỗi khi insert dữ liệu: duplicate key value violates unique constraint "dim_circuits_pkey"
+DETAIL:  Key (circuitid)=(1) already exists.
+[2025-04-08T09:27:33.600+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:27:33.606+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/transform_dim_circuits.py", line 40, in transform_dim_circuits
+    warehouse_operator.insert_table(insert_table_querry, dim_circuits_df)
+  File "/opt/airflow/dags/postgresql_operator.py", line 35, in insert_table
+    cursor.executemany(query, values)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_circuits_pkey"
+DETAIL:  Key (circuitid)=(1) already exists.
+
+[2025-04-08T09:27:33.664+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=transform.transform_dim_circuits, run_id=scheduled__2025-03-31T00:00:00+00:00, execution_date=20250331T000000, start_date=20250408T092732, end_date=20250408T092733
+[2025-04-08T09:27:34.137+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 20 for task transform.transform_dim_circuits (duplicate key value violates unique constraint "dim_circuits_pkey"
+DETAIL:  Key (circuitid)=(1) already exists.
+; 645)
+[2025-04-08T09:27:34.202+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T09:27:34.235+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -18,10 +18,10 @@ def transform_dim_races(**kwargs):
     # Thay '\N' bằng NaN
     dim_races_df['time'] = dim_races_df['time'].replace(r'\\N', pd.NA, regex=True)
 
-    # Ép kiểu cột 'time' thành datetime.time, bỏ qua lỗi
+    # Chuyển chuỗi thời gian thành kiểu datetime.time, những giá trị lỗi sẽ thành NaT, sau đó .dt.time sẽ lấy phần thời gian
     dim_races_df['time'] = pd.to_datetime(dim_races_df['time'], errors='coerce').dt.time
 
-    # Thay NaT (Not a Time) bằng None để tránh lỗi khi insert vào PostgreSQL
+    # Thay NaT bằng None để tránh lỗi khi insert vào PostgreSQL
     dim_races_df['time'] = dim_races_df['time'].where(pd.notna(dim_races_df['time']), None)
 
     POSTGRES_CONN_ID = 'postgres_default'

@@ -1,0 +1,112 @@
+[2025-04-08T09:27:33.580+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:27:33.680+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:33.727+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T09:27:33.728+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:27:33.777+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_status> on 2025-03-30 00:00:00+00:00
+[2025-04-08T09:27:33.804+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'transform.transform_dim_status', 'scheduled__2025-03-30T00:00:00+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpdt93kfzt']
+[2025-04-08T09:27:33.808+0000] {standard_task_runner.py:91} INFO - Job 27: Subtask transform.transform_dim_status
+[2025-04-08T09:27:33.822+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=621) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:27:33.826+0000] {standard_task_runner.py:63} INFO - Started process 665 to run task
+[2025-04-08T09:27:33.940+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [running]> on host 1c2d39091a25
+[2025-04-08T09:27:34.205+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='transform.transform_dim_status' AIRFLOW_CTX_EXECUTION_DATE='2025-03-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-30T00:00:00+00:00'
+[2025-04-08T09:27:34.232+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:27:34.394+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:27:34.409+0000] {logging_mixin.py:188} INFO - Đã tạo bảng thành công.
+[2025-04-08T09:27:34.429+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:27:34.470+0000] {logging_mixin.py:188} INFO - Lỗi khi insert dữ liệu: duplicate key value violates unique constraint "dim_status_pkey"
+DETAIL:  Key (statusid)=(1) already exists.
+[2025-04-08T09:27:34.473+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:27:34.487+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/transform_dim_status.py", line 33, in transform_dim_status
+    warehouse_operator.insert_table(insert_table_querry, dim_status_df)
+  File "/opt/airflow/dags/postgresql_operator.py", line 35, in insert_table
+    cursor.executemany(query, values)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_status_pkey"
+DETAIL:  Key (statusid)=(1) already exists.
+
+[2025-04-08T09:27:34.520+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=formula1-etl-pipeline, task_id=transform.transform_dim_status, run_id=scheduled__2025-03-30T00:00:00+00:00, execution_date=20250330T000000, start_date=20250408T092733, end_date=20250408T092734
+[2025-04-08T09:27:34.547+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 27 for task transform.transform_dim_status (duplicate key value violates unique constraint "dim_status_pkey"
+DETAIL:  Key (statusid)=(1) already exists.
+; 665)
+[2025-04-08T09:27:34.607+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-08T09:27:34.632+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T09:59:49.213+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T09:59:49.246+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T09:59:49.254+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T09:59:49.255+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T09:59:49.267+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_status> on 2025-03-30 00:00:00+00:00
+[2025-04-08T09:59:49.276+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'transform.transform_dim_status', 'scheduled__2025-03-30T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmp4mob09xe']
+[2025-04-08T09:59:49.280+0000] {standard_task_runner.py:91} INFO - Job 15: Subtask transform.transform_dim_status
+[2025-04-08T09:59:49.281+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=464) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T09:59:49.282+0000] {standard_task_runner.py:63} INFO - Started process 478 to run task
+[2025-04-08T09:59:49.324+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [running]> on host a06a1ce74445
+[2025-04-08T09:59:49.406+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='transform.transform_dim_status' AIRFLOW_CTX_EXECUTION_DATE='2025-03-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-30T00:00:00+00:00'
+[2025-04-08T09:59:49.407+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T09:59:49.435+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:59:49.447+0000] {logging_mixin.py:188} INFO - Đã tạo bảng thành công.
+[2025-04-08T09:59:49.461+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T09:59:49.496+0000] {logging_mixin.py:188} INFO - Đã transform và lưu dữ liệu vào bảng.
+[2025-04-08T09:59:49.496+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-08T09:59:49.497+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T09:59:49.508+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=formula1-etl-pipeline, task_id=transform.transform_dim_status, run_id=scheduled__2025-03-30T00:00:00+00:00, execution_date=20250330T000000, start_date=20250408T095949, end_date=20250408T095949
+[2025-04-08T09:59:49.536+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-08T09:59:49.553+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-08T10:49:03.482+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-08T10:49:03.519+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T10:49:03.531+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-08T10:49:03.535+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-08T10:49:03.567+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_status> on 2025-03-30 00:00:00+00:00
+[2025-04-08T10:49:03.583+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'transform.transform_dim_status', 'scheduled__2025-03-30T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmpx96f3rgj']
+[2025-04-08T10:49:03.590+0000] {standard_task_runner.py:91} INFO - Job 16: Subtask transform.transform_dim_status
+[2025-04-08T10:49:03.589+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=311) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-08T10:49:03.593+0000] {standard_task_runner.py:63} INFO - Started process 326 to run task
+[2025-04-08T10:49:03.655+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [running]> on host 4e9e6de312e9
+[2025-04-08T10:49:03.781+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='transform.transform_dim_status' AIRFLOW_CTX_EXECUTION_DATE='2025-03-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-30T00:00:00+00:00'
+[2025-04-08T10:49:03.784+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-08T10:49:03.835+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T10:49:03.849+0000] {logging_mixin.py:188} INFO - Đã tạo bảng thành công.
+[2025-04-08T10:49:03.872+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-08T10:49:03.913+0000] {logging_mixin.py:188} INFO - Đã transform và lưu dữ liệu vào bảng.
+[2025-04-08T10:49:03.914+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-08T10:49:03.914+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-08T10:49:03.926+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=formula1-etl-pipeline, task_id=transform.transform_dim_status, run_id=scheduled__2025-03-30T00:00:00+00:00, execution_date=20250330T000000, start_date=20250408T104903, end_date=20250408T104903
+[2025-04-08T10:49:03.971+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-08T10:49:03.994+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-08T10:49:03.996+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-15T07:09:07.142+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-15T07:09:07.179+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:07.194+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [queued]>
+[2025-04-15T07:09:07.194+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-04-15T07:09:07.210+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transform.transform_dim_status> on 2025-03-30 00:00:00+00:00
+[2025-04-15T07:09:07.221+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'formula1-etl-pipeline', 'transform.transform_dim_status', 'scheduled__2025-03-30T00:00:00+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/ETL_dag.py', '--cfg-path', '/tmp/tmp1owo73t0']
+[2025-04-15T07:09:07.225+0000] {standard_task_runner.py:91} INFO - Job 23: Subtask transform.transform_dim_status
+[2025-04-15T07:09:07.225+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=479) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-15T07:09:07.226+0000] {standard_task_runner.py:63} INFO - Started process 494 to run task
+[2025-04-15T07:09:07.278+0000] {task_command.py:426} INFO - Running <TaskInstance: formula1-etl-pipeline.transform.transform_dim_status scheduled__2025-03-30T00:00:00+00:00 [running]> on host e24a12ae0bf8
+[2025-04-15T07:09:07.383+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='formula1-etl-pipeline' AIRFLOW_CTX_TASK_ID='transform.transform_dim_status' AIRFLOW_CTX_EXECUTION_DATE='2025-03-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-30T00:00:00+00:00'
+[2025-04-15T07:09:07.385+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-15T07:09:07.436+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-15T07:09:07.447+0000] {logging_mixin.py:188} INFO - Đã tạo bảng thành công.
+[2025-04-15T07:09:07.462+0000] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-04-15T07:09:07.502+0000] {logging_mixin.py:188} INFO - Đã transform và lưu dữ liệu vào bảng.
+[2025-04-15T07:09:07.503+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-15T07:09:07.503+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-15T07:09:07.514+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=formula1-etl-pipeline, task_id=transform.transform_dim_status, run_id=scheduled__2025-03-30T00:00:00+00:00, execution_date=20250330T000000, start_date=20250415T070907, end_date=20250415T070907
+[2025-04-15T07:09:07.562+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-15T07:09:07.579+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
